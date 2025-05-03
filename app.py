@@ -31,7 +31,6 @@ def preprocessing(df):
     )
     df_clean = pd.DataFrame(df_clean,columns=new_columns)
     df_clean['Mois'] = df.Mois
-    df_clean['Jour'] = df.Jour
     df_clean['Annee'] = df.Annee
     return df_clean
     
