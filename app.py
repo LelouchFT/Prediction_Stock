@@ -147,11 +147,11 @@ if mode == "📝 Saisie manuelle":
     st.markdown("---")
     if st.button("🔍 Prédire (manuel)"):
         input_df = pd.DataFrame([{
+            'Unit': unit,
+            'Ville': ville,
             'ProductName': product,
             'Categorie': categorie,
-            'manufacturer': manufacturer,
-            'Ville': ville,
-            'Unit': unit,
+            'manufacturer': manufacturer,            
             'Mois':month,
             'Annee':year,
         }])
