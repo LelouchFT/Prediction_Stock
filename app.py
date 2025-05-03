@@ -1,8 +1,10 @@
 import streamlit as st
 import joblib
+import numpy as np
 from sklearn.tree import DecisionTreeRegressor
 import pandas as pd
-
+from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
 
 def preprocessing(df):
     print('preprocessing')
