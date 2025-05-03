@@ -108,7 +108,7 @@ product_names = ['Scotch Tape 29','Converse All Star 16','Barbie Fashion Set 9',
 categories = ['Fournitures','Chaussures','Jouets','Vêtements','Nourriture','Électronique']
 manufacturers = ['Nike','Johnson & Johnson','Nestlé','Sony','Unilever','LG','Samsung','Procter & Gamble','Heineken',"L'Oréal",'Danone','Apple','Panasonic','Microsoft','Adidas','Huawei','Philips']
 villes = ['Douala', 'Yaoundé','Limbe','Bafoussam','Dschang','Bertouai']
-units = [1, 2, 5, 10]
+
 
 # Titre
 st.markdown("<h1 style='text-align: center; color: #4CAF50;'>🛒 Prédiction de Stock Intelligent</h1>", unsafe_allow_html=True)
@@ -127,8 +127,7 @@ if mode == "📝 Saisie manuelle":
     with col1:
         product = st.selectbox("📦 Nom du produit", product_names)
         manufacturer = st.selectbox("🏭 Fabricant", manufacturers)
-        unit = st.selectbox("🔢 Quantité par commande", units)
-
+        unit = st.number_input("Prix unitaire", format="%.2f")
     with col2:
         categorie = st.selectbox("🗂️ Catégorie", categories)
         ville = st.selectbox("🌍 Ville", villes)
