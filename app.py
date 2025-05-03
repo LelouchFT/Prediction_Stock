@@ -5,6 +5,12 @@ from sklearn.tree import DecisionTreeRegressor
 import pandas as pd
 from sklearn.pipeline import Pipeline
 from sklearn.compose import ColumnTransformer
+# bibliotheque
+import pandas as pd
+from sklearn.model_selection import train_test_split,GridSearchCV
+from sklearn.metrics import mean_squared_error,mean_absolute_error,r2_score
+from sklearn.preprocessing import OneHotEncoder,MinMaxScaler,StandardScaler
+from sklearn.pipeline import Pipeline
 
 def preprocessing(df):
     print('preprocessing')
