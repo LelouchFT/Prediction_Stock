@@ -152,7 +152,9 @@ if mode == "📝 Saisie manuelle":
             'Categorie': categorie,
             'manufacturer': manufacturer,
             'Ville': ville,
-            'Unit': unit
+            'Unit': unit,
+            'Mois':month,
+            'Annee':year,
         }])
 
         input_processed = preprocessing(input_df)
