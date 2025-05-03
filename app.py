@@ -135,13 +135,13 @@ if mode == "📝 Saisie manuelle":
     with col1:
         product = st.selectbox("📦 Nom du produit", product_names)
         manufacturer = st.selectbox("🏭 Fabricant", manufacturers)
-        unit = st.number_input("Prix unitaire", format="%.2f",min_value = 657,step = 100)
+        unit = st.number_input("Prix unitaire", format="%.2f",min_value = 657.0,step = 100.0)
     with col2:
         categorie = st.selectbox("🗂️ Catégorie", categories)
         ville = st.selectbox("🌍 Ville", villes)
     with col3:
         month = st.selectbox("🗂️ Mois", mois)
-        year = unit = st.number_input("Prix unitaire",format = "%d",min_value = 1)
+        year = unit = st.number_input("Annee",format = "%d",min_value = 2025)
         
 
     st.markdown("---")
@@ -161,7 +161,7 @@ if mode == "📝 Saisie manuelle":
 
         st.markdown(f"""
         <div style='text-align: center; font-size: 24px; color: #2196F3; padding: 20px; background-color: #E3F2FD; border-radius: 10px;'>
-            ✅ Quantité prédite : <strong>{prediction:.2f} unités</strong>
+            ✅ Quantité de {product} que vous vendrez en {month}+"/"+{year} est de pour : <strong>{prediction:.2f} unités</strong>
         </div>
         """, unsafe_allow_html=True)
 
