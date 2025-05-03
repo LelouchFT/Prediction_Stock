@@ -116,6 +116,7 @@ product_names = ['Scotch Tape 29','Converse All Star 16','Barbie Fashion Set 9',
 categories = ['Fournitures','Chaussures','Jouets','Vêtements','Nourriture','Électronique']
 manufacturers = ['Nike','Johnson & Johnson','Nestlé','Sony','Unilever','LG','Samsung','Procter & Gamble','Heineken',"L'Oréal",'Danone','Apple','Panasonic','Microsoft','Adidas','Huawei','Philips']
 villes = ['Douala', 'Yaoundé','Limbe','Bafoussam','Dschang','Bertouai']
+mois = [1,2,3,4,5,6,7,8,9,10,11,12]
 
 
 # Titre
@@ -130,15 +131,19 @@ mode = st.radio("Choisissez le mode de prédiction :", ["📝 Saisie manuelle", 
 # -------------------------
 if mode == "📝 Saisie manuelle":
     st.markdown("### Veuillez renseigner les informations du produit :")
-    col1, col2 = st.columns(2)
+    col1, col2,col3 = st.columns(3)
 
     with col1:
         product = st.selectbox("📦 Nom du produit", product_names)
         manufacturer = st.selectbox("🏭 Fabricant", manufacturers)
-        unit = st.number_input("Prix unitaire", format="%.2f")
+        unit = st.number_input("Prix unitaire", format="%.2f",min_value = 657,step = 100)
     with col2:
         categorie = st.selectbox("🗂️ Catégorie", categories)
         ville = st.selectbox("🌍 Ville", villes)
+    with col3:
+        month = st.selectbox("🗂️ Mois", mois)
+        year = unit = st.number_input("Prix unitaire",format = "%d",min_value = 1)
+        
 
     st.markdown("---")
     if st.button("🔍 Prédire (manuel)"):
