@@ -16,6 +16,51 @@ from sklearn.pipeline import Pipeline
     
 
 
+
+def encode_cyclic_features(X):
+        cyc_features = ['Mois', 'Annee']
+        df = pd.DataFrame(X, columns=cyc_features)
+        df['Mois_sin'] = np.sin(2 * np.pi * df['Mois'] / 12)
+        df['Mois_cos'] = np.cos(2 * np.pi * df['Mois'] / 12)
+        df['Annee_sin'] = np.sin(2 * np.pi * (df['Annee'] - 2000) / 31)
+        df['Annee_cos'] = np.cos(2 * np.pi * (df['Annee'] - 2000) / 31)
+        return df[['Mois_sin', 'Mois_cos', 'Annee_sin', 'Annee_cos']]
+
+def preprocessing():
+    # Colonnes
+    cat_features = ['ProductName', 'Categorie', 'manufacturer', 'Ville']
+    num_features = ['Unit']
+    cyc_features = ['Mois', 'Annee']
+
+    # Encodage cyclique avec bornes fixes (par exemple : années entre 2000 et 2030)
+
+    cyclic_transformer = Pipeline([
+        ('cyclic', FunctionTransformer(encode_cyclic_features, validate=False))
+    ])
+
+    num_transformer = Pipeline([
+        ('scaler', RobustScaler())
+    ])
+
+    cat_transformer = Pipeline([
+        ('encoder', OneHotEncoder(handle_unknown='ignore', sparse_output=False))
+    ])
+
+    # Préprocesseur combiné
+    preprocessor = ColumnTransformer([
+        ('num', num_transformer, num_features),
+        ('cyclic', cyclic_transformer, cyc_features),
+        ('cat', cat_transformer, cat_features)
+    ])
+
+    # Pipeline complet non entraîné
+    pipeline = Pipeline([
+        ('preprocessing', preprocessor),
+        ('regressor', DecisionTreeRegressor(random_state=42))
+    ])
+
+    return pipeline
+
 # Chargement du modèle
 model = joblib.load("modele.joblib")
 
