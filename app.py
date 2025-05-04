@@ -12,27 +12,7 @@ from sklearn.metrics import mean_squared_error,mean_absolute_error,r2_score
 from sklearn.preprocessing import OneHotEncoder,MinMaxScaler,StandardScaler
 from sklearn.pipeline import Pipeline
 
-def preprocessing(df):
-    print('preprocessing')
-    cat_features = ['ProductName','Categorie','manufacturer','Ville']
-    num_features = ['Unit']
-    num_tranformer = Pipeline([('scaler',MinMaxScaler())])
-    cat_transformer = Pipeline([('encoder',OneHotEncoder(handle_unknown = 'ignore',sparse_output=False))])
-    preprocessor = ColumnTransformer([
-        ('num',num_tranformer,num_features),
-        ('cat',cat_transformer,cat_features)
-    ])
-    df_clean = preprocessor.fit_transform(df)
-    if hasattr(df_clean,'toarray'):
-       df_clean = df_clean.toarray()
-    new_columns = (
-        num_features +
-        list(preprocessor.named_transformers_['cat'].named_steps['encoder'].get_feature_names_out(cat_features))
-    )
-    df_clean = pd.DataFrame(df_clean,columns=new_columns)
-    df_clean['Mois'] = df.Mois
-    df_clean['Annee'] = df.Annee
-    return df_clean
+
     
 
 
