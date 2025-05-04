@@ -156,7 +156,7 @@ if mode == "📝 Saisie manuelle":
             'Annee':year,
         }])
 
-        input_processed = preprocessing(input_df)
+        input_processed = input_df#preprocessing(input_df)
         prediction = model.predict(input_processed)[0]
 
         st.markdown(f"""
@@ -182,7 +182,7 @@ else:
             st.write("Aperçu des données :", df.head())
 
             if st.button("🔍 Prédire (fichier)"):
-                df_encoded = preprocessing(df.copy())
+                df_encoded = df# preprocessing(df.copy())
                 predictions = model.predict(df_encoded)
                 df['Quantite_Predite'] = predictions
 
