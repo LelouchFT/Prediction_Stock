@@ -161,7 +161,7 @@ if mode == "📝 Saisie manuelle":
 
         st.markdown(f"""
         <div style='text-align: center; font-size: 24px; color: #2196F3; padding: 20px; background-color: #E3F2FD; border-radius: 10px;'>
-            ✅ Quantité de {product} que vous vendrez en {month}+"/"+{year} est de pour : <strong>{prediction:.2f} unités</strong>
+            ✅ Quantité de {product} que vous vendrez en {month}"+"/"+"{year} est de pour : <strong>{prediction:.2f} unités</strong>
         </div>
         """, unsafe_allow_html=True)
 
